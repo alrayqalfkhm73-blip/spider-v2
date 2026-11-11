@@ -92,7 +92,7 @@ def do_run_web(debug=False):
     config.ensure_directories()
 
     from web.app import app
-    port = config.web.web_port
+    port = 7860
     log.info(f"Web server starting on port {port}")
     print(f"\n🌐 Web: http://0.0.0.0:{port}")
     print(f"🔐 Login: http://127.0.0.1:{port}/login")
@@ -154,12 +154,12 @@ def do_run_all(debug=False):
         print(f"⚠️  AI Service check failed: {str(e)[:60]}")
 
     # Start Web in main thread
-    print(f"\n🌐 Web: http://0.0.0.0:{config.web.web_port}")
-    print(f"🔐 Login: http://127.0.0.1:{config.web.web_port}/login")
-    print(f"🎨 App: http://127.0.0.1:{config.web.web_port}/app\n")
+    print(f"\n🌐 Web: http://0.0.0.0:{7860}")
+    print(f"🔐 Login: http://127.0.0.1:{7860}/login")
+    print(f"🎨 App: http://127.0.0.1:{7860}/app\n")
     try:
         from web.app import app
-        app.run(host="0.0.0.0", port=config.web.web_port, debug=debug, use_reloader=False, threaded=True)
+        app.run(host="0.0.0.0", port=7860, debug=debug, use_reloader=False, threaded=True)
     except KeyboardInterrupt:
         log.info("All services stopped")
     finally:
