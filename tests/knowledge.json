@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "patterns": [
+    {
+      "id": "missing_module",
+      "regex": "ModuleNotFoundError: No module named '([^']+)'",
+      "fix_type": "pip_install",
+      "fix_arg": "{0}",
+      "description": "مكتبة ناقصة"
+    },
+    {
+      "id": "missing_dotenv",
+      "regex": "No module named 'dotenv'",
+      "fix_type": "pip_install",
+      "fix_arg": "python-dotenv",
+      "description": "dotenv ناقص"
+    },
+    {
+      "id": "sqlite_no_column",
+      "regex": "no such column: (\\w+)",
+      "fix_type": "manual",
+      "description": "عمود ناقص في الجدول — شغل migrations.apply_all()"
+    },
+    {
+      "id": "sqlite_unique",
+      "regex": "UNIQUE constraint failed",
+      "fix_type": "manual",
+      "description": "تكرار في PK/UNIQUE — retry أو تعديل البيانات"
+    },
+    {
+      "id": "sqlite_no_table",
+      "regex": "no such table: (\\w+)",
+      "fix_type": "manual",
+      "description": "جدول ناقص — شغل schema.create_tables()"
+    },
+    {
+      "id": "no_event_loop",
+      "regex": "There is no current event loop in thread",
+      "fix_type": "manual",
+      "description": "Python 3.12+ — أضف asyncio.new_event_loop() + set_event_loop() قبل الاستيراد"
+    },
+    {
+      "id": "pyrogram_py314",
+      "regex": "get_event_loop.*RuntimeError",
+      "fix_type": "manual",
+      "description": "Pyrogram مع Python 3.14 — loop setup في bot/__init__.py"
+    },
+    {
+      "id": "flask_no_secret",
+      "regex": "secret_key.*missing",
+      "fix_type": "manual",
+      "description": "FLASK_SECRET ناقص في .env"
+    },
+    {
+      "id": "template_not_found",
+      "regex": "TemplateNotFound",
+      "fix_type": "manual",
+      "description": "ملف HTML ناقص"
+    }
+  ]
+}

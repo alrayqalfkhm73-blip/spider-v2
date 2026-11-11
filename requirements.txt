@@ -1,0 +1,21 @@
+# === Telegram ===
+pyrogram==2.0.106
+tgcrypto==1.2.5
+
+# === Web ===
+flask==3.0.0
+requests==2.31.0
+python-dotenv==1.0.0
+
+# === AI Providers ===
+httpx==0.27.0
+groq==0.11.0
+google-genai==0.3.0
+
+# === Media ===
+yt-dlp==2024.8.6
+edge-tts==6.1.12
+
+# === Utils ===
+beautifulsoup4==4.12.3
+Pillow==10.4.0

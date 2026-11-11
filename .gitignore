@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.session
+.env
+*.bak*
+*.zip
+*.log
+ALL_PROJECT_CODE.txt
+unknown_errors.txt
+code_dump.txt

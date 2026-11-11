@@ -1,0 +1,35 @@
+"""كل الكيبوردات"""
+from pyrogram.types import ReplyKeyboardMarkup, KeyboardButton
+
+def _kb(rows: list) -> ReplyKeyboardMarkup:
+    return ReplyKeyboardMarkup(
+        [[KeyboardButton(text=btn) for btn in row] for row in rows],
+        resize_keyboard=True
+    )
+
+def main_menu(is_owner: bool = False) -> ReplyKeyboardMarkup:
+    if is_owner:
+        rows = [
+            ["🕷️ السحب", "🚀 الضخ"],
+            ["📱 الجلسات", "🌐 البروكسيات"],
+            ["💰 المحفظة", "🎁 الهدية"],
+            ["🎡 العجلة", "🏆 المتصدرين"],
+            ["⚙️ الإعدادات", "ℹ️ المساعدة"],
+        ]
+    else:
+        rows = [
+            ["🕷️ السحب", "🚀 الضخ"],
+            ["💰 المحفظة", "🎁 الهدية"],
+            ["🎡 العجلة", "🏆 المتصدرين"],
+            ["⚙️ الإعدادات", "ℹ️ المساعدة"],
+        ]
+    return _kb(rows)
+
+def owner_menu() -> ReplyKeyboardMarkup:
+    return _kb([
+        ["📊 إحصائيات النظام", "📢 بث رسالة"],
+        ["🕒 وضع الصيانة", "🔙 رجوع"],
+    ])
+
+def back_kb() -> ReplyKeyboardMarkup:
+    return _kb([["↩️ رجوع"]])

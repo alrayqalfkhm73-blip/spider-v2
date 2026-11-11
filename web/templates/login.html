@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spider AI — Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+*{font-family:Cairo,sans-serif;margin:0;padding:0;box-sizing:border-box}
+body{background:#030510;color:#e8eefc;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden}
+.orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:.4;pointer-events:none;animation:float 8s infinite ease-in-out alternate}
+.orb1{width:400px;height:400px;background:#8b5cf6;top:-100px;left:-100px}
+.orb2{width:300px;height:300px;background:#3b82f6;bottom:-50px;right:-50px;animation-delay:-4s}
+.orb3{width:250px;height:250px;background:#06b6d4;top:50%;left:50%;animation-delay:-2s;opacity:.2}
+@keyframes float{0%{transform:translate(0,0) scale(1)}100%{transform:translate(50px,50px) scale(1.15)}}
+.card{position:relative;z-index:1;background:rgba(15,15,30,.7);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);border:1px solid rgba(139,92,246,.25);border-radius:24px;padding:40px 32px;width:100%;max-width:420px;box-shadow:0 25px 80px rgba(0,0,0,.6)}
+.brand{text-align:center;margin-bottom:32px}
+.logo{font-size:56px;margin-bottom:8px;filter:drop-shadow(0 0 20px rgba(139,92,246,.8))}
+.title{font-size:26px;font-weight:900;background:linear-gradient(135deg,#8b5cf6,#3b82f6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.subtitle{font-size:13px;color:#64748b;font-weight:600}
+.error{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#f87171;padding:12px 16px;border-radius:12px;margin-bottom:20px;font-size:13px;font-weight:700;text-align:center;animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.field{margin-bottom:18px}
+.label{font-size:12px;color:#94a3b8;font-weight:800;margin-bottom:8px;display:block;letter-spacing:.5px}
+.input{width:100%;padding:14px 18px;background:rgba(0,0,0,.4);border:1px solid rgba(139,92,246,.2);border-radius:12px;color:#e8eefc;font-size:14px;font-family:Cairo,sans-serif;transition:all .2s;outline:none}
+.input:focus{border-color:#8b5cf6;box-shadow:0 0 0 3px rgba(139,92,246,.15)}
+.input::placeholder{color:#475569}
+.row{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:12px;color:#94a3b8}
+.row input[type=checkbox]{width:16px;height:16px;accent-color:#8b5cf6;cursor:pointer}
+.btn{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#3b82f6);color:#fff;font-weight:900;font-size:15px;cursor:pointer;transition:all .2s;font-family:Cairo,sans-serif;box-shadow:0 8px 25px rgba(139,92,246,.4)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(139,92,246,.6)}
+.btn:active{transform:scale(.98)}
+.hint{margin-top:24px;text-align:center;font-size:11px;color:#475569;line-height:1.6}
+.hint code{background:rgba(139,92,246,.15);color:#a78bfa;padding:2px 8px;border-radius:6px;font-family:monospace}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<div class="card">
+    <div class="brand">
+        <div class="logo">🕷️</div>
+        <div class="title">SPIDER V2</div>
+        <div class="subtitle">تسجيل الدخول للمنظومة</div>
+    </div>
+
+    {% if error %}
+    <div class="error">⚠️ {{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        <div class="field">
+            <label class="label">🆔 Telegram ID</label>
+            <input class="input" type="text" name="user_id" placeholder="123456789" required autofocus>
+        </div>
+
+        <div class="field">
+            <label class="label">🔑 الباسورد</label>
+            <input class="input" type="password" name="password" placeholder="••••••••" required>
+        </div>
+
+        <label class="row">
+            <input type="checkbox" name="remember">
+            <span>تذكرني لمدة 30 يوم</span>
+        </label>
+
+        <button class="btn" type="submit">🚀 دخول</button>
+    </form>
+
+    <div class="hint">
+        مستخدم جديد؟ ابعت <code>/start</code> للبوت أول.<br>
+        الباسورد الأول هيتسجل تلقائياً في أول دخول.
+    </div>
+</div>
+</body>
+</html>
